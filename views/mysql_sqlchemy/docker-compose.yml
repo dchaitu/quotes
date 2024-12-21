@@ -1,0 +1,22 @@
+version: '3'
+
+services: 
+  db-mysql:
+    image: mysql:latest
+    container_name: "mysql-sql-alchemy-quotes"
+    environment:
+      MYSQL_USER: "chaitu"
+      MYSQL_ROOT_PASSWORD: "password"
+      MYSQL_DATABASE: "db"
+      MYSQL_PASSWORD: "pwd"
+      # MYSQL_ROOT_HOST: "%"
+      # MYSQL_HOST: "%"
+    ports:
+      - "3333:3306"
+#    volumes:
+#      - mysql_data:/var/lib/mysql/data
+    healthcheck:
+      test: mysql --user=root --password=password -e 'show databases'
+
+#volumes:
+#  mysql_data:
